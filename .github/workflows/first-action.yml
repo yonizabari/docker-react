@@ -28,7 +28,10 @@ jobs:
           context: .
           file: ./Dockerfile.dev
           push: false
-          tags: yonizabari/frontend:latest
+          tags: yonizabari/frontend
       -
         name: Run npm run test
-        uses: ./.github/actions/build-and-test
+        uses: addnab/docker-run-action@v3
+        with:
+          image: yonizabari/frontend
+          run: npm run test
