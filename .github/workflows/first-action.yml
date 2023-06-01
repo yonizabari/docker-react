@@ -37,4 +37,5 @@ jobs:
         uses: addnab/docker-run-action@v3
         with:
           image: yonizabari/frontend:latest
-          run: npm run test -- --coverage
+          options: -e CI=true
+          run: npm run test
