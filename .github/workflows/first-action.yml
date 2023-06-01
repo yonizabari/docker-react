@@ -31,4 +31,4 @@ jobs:
           tags: yonizabari/frontend
       -
         name: Run npm run test
-        uses: ./.github/actions/deploy-s3-docker
+        uses: ./.github/actions/build-and-test
