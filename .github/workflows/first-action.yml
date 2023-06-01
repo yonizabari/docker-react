@@ -27,11 +27,14 @@ jobs:
         with:
           context: .
           file: ./Dockerfile.dev
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
           push: false
-          tags: yonizabari/frontend
+          tags: yonizabari/frontend:latest
       -
         name: Run npm run test
         uses: addnab/docker-run-action@v3
         with:
-          image: yonizabari/frontend
+          image: yonizabari/frontend:latest
           run: npm run test
