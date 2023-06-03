@@ -34,5 +34,5 @@ jobs:
           options: -e CI=true
           run: npm run test
       - name: deploy
-        uses: deploy
+        uses: ./.github/actions/deploy
 
