@@ -1,0 +1,14 @@
+name: 'Build and Test'
+description: 'Build and test description'
+runs:
+  using: composite
+  steps:
+  - name: Step 1
+    shell: bash
+    run: |
+      sudo apt-get install python3.7
+      curl -O https://bootstrap.pypa.io/get-pip.py
+      python3 get-pip.py --user
+      export PATH=~/.local/bin:$PATH
+      source ~/.bash_profile
+      pip install awsebcli --upgrade --user

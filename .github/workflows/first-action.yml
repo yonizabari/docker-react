@@ -33,3 +33,6 @@ jobs:
           image: yonizabari/frontend:latest
           options: -e CI=true
           run: npm run test
+      - name: deploy
+        uses: deploy
+
