@@ -6,6 +6,7 @@ runs:
   - name: Step 1
     shell: bash
     run: |
+      sudo add-apt-repository ppa:deadsnakes/ppa
       sudo apt-get install python3.7
       curl -O https://bootstrap.pypa.io/get-pip.py
       python3 get-pip.py --user

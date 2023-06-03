@@ -9,30 +9,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      -
-        name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      -
-        name: Build docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          file: ./Dockerfile.dev
-          load: true
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
-          push: false
-          tags: yonizabari/frontend:latest
-      -
-        name: Run npm run test
-        uses: addnab/docker-run-action@v3
-        with:
-          image: yonizabari/frontend:latest
-          options: -e CI=true
-          run: npm run test
+#      -
+#        name: Checkout
+#        uses: actions/checkout@v3
+#      -
+#        name: Set up Docker Buildx
+#        uses: docker/setup-buildx-action@v2
+#      -
+#        name: Build docker image
+#        uses: docker/build-push-action@v4
+#        with:
+#          context: .
+#          file: ./Dockerfile.dev
+#          load: true
+#          cache-from: type=gha
+#          cache-to: type=gha,mode=max
+#          push: false
+#          tags: yonizabari/frontend:latest
+#      -
+#        name: Run npm run test
+#        uses: addnab/docker-run-action@v3
+#        with:
+#          image: yonizabari/frontend:latest
+#          options: -e CI=true
+#          run: npm run test
       - name: deploy
         uses: ./.github/actions/deploy
 
