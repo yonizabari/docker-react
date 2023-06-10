@@ -37,6 +37,8 @@ jobs:
       - name: Generate Deployment Package
         # zip all files except .git
         run: zip -r deploy-react-app.zip * -x "**.git**"
+      - name: Set NOW environment variable
+        run: echo "NOW=$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
 
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
@@ -46,7 +48,7 @@ jobs:
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           application_name: react
           environment_name: React-env
-          version_label: "app-${{ steps.format-time.outputs.replaced }}"
+          version_label: "app-${{ env.NOW }}"
           region: us-east-1
           deployment_package: deploy-react-app.zip
           existing_bucket_name: ${{ secrets.AWS_BUCKET }}
