@@ -53,7 +53,7 @@ jobs:
           deployment_package: deploy-react-app.zip
           existing_bucket_name: ${{ secrets.AWS_BUCKET }}
 
-      - name: Deployed!
+      - name: Deployed :)
         run: echo App deployed to ELB
 
 
