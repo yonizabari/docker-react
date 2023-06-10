@@ -42,10 +42,25 @@ jobs:
           aws_bucket: ${{ secrets.AWS_BUCKET }}
           source_dir: '.'
           destination_dir: react
-      - name: deploy
-        uses: ./.github/actions/deploy
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
         with:
-          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          #  input the credentials you used to setup AWS CLI and credentials for the application environment
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          application_name: react
+          environment_name: React-env
+          version_label: "app-${{ steps.format-time.outputs.replaced }}"
+          region: us-east-1
+
+      - name: Deployed!
+        run: echo App deployed to ELB
+
+
+#      - name: deploy
+#        uses: ./.github/actions/deploy
+#        with:
+#          aws_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
 
 
