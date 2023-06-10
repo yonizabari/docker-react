@@ -23,9 +23,9 @@ runs:
   - name: Configure AWS Credentials
     uses: aws-actions/configure-aws-credentials@v1
     with:
-      aws-access-key-id: "${{ inputs.ACCESS_KEY_ID }}"
-      aws-secret-access-key: "${{ inputs.SECRET_ACCESS_KEY }}"
-      aws-region: "us-east-1"
+      aws-region: us-east-1
+      aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
+      aws-secret-access-key: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
   - name: Deploy image to elastic beanstalk
     shell: bash
     run: |
