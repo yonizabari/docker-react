@@ -3,7 +3,7 @@ description: 'Build and test description'
 runs:
   using: composite
   steps:
-  - name: Step 1
+  - name: Install eb cli
     shell: bash
     run: |
       sudo add-apt-repository ppa:deadsnakes/ppa
@@ -13,3 +13,9 @@ runs:
       export PATH=~/.local/bin:$PATH
       source ~/.bash_profile
       pip install awsebcli --upgrade --user
+  - name: Deploy image to elastic beanstalk
+    shell: bash
+    run: |
+      eb labs download
+      eb init --region eu-east-1 --platform "Docker" react
+      eb deploy React-env
