@@ -21,8 +21,9 @@ runs:
       source ~/.bash_profile
       pip install awsebcli --upgrade --user
   - name: Configure AWS Credentials
-    uses: aws-actions/configure-aws-credentials@v1
+    uses: aws-actions/configure-aws-credentials@v2
     with:
+      role-to-assume: arn:aws:iam::594718524388:role/service-role/aws-elasticbeanstalk-service-role
       aws-region: us-east-1
       aws-access-key-id: ${{ inputs.AWS_ACCESS_KEY_ID }}
       aws-secret-access-key: ${{ inputs.AWS_SECRET_ACCESS_KEY }}
